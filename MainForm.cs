@@ -36,13 +36,21 @@ namespace WinFormsApp1 {
         }
 
         private void CreateObjectWithMouse(object sender, MouseEventArgs e) {
-     
             GraphObject go = new GraphObject();
             try {
                 go.X = e.X;
                 go.Y = e.Y;
             } catch (ArgumentException ex) { MessageBox.Show("Incorrect coord"); }
+            elements.Add(go);
+            this.MainPanel.Invalidate();
+        }
 
+        private void SelectObject(object sender, MouseEventArgs e) {
+            foreach (GraphObject element in elements) {
+                if (element.ContainsPoint(e.Location)) {
+                    element.Selected = true;
+                }
+            }
             this.MainPanel.Invalidate();
         }
     }

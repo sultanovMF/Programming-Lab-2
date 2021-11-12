@@ -153,6 +153,7 @@
             this.MainPanel.TabIndex = 4;
             this.MainPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.PaintPanel);
             this.MainPanel.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.CreateObjectWithMouse);
+            this.MainPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.SelectObject);
             // 
             // MainForm
             // 
