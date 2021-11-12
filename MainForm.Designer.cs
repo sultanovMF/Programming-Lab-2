@@ -37,6 +37,8 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.MainPanel = new System.Windows.Forms.Panel();
+            this.rectangleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ellipseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -70,9 +72,13 @@
             // 
             // FiguresMenuItems
             // 
+            this.FiguresMenuItems.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.rectangleToolStripMenuItem,
+            this.ellipseToolStripMenuItem});
             this.FiguresMenuItems.Name = "FiguresMenuItems";
             this.FiguresMenuItems.Size = new System.Drawing.Size(76, 24);
             this.FiguresMenuItems.Text = "Фигуры";
+            this.FiguresMenuItems.Click += new System.EventHandler(this.FiguresMenuItems_Click);
             // 
             // contextMenuStrip1
             // 
@@ -155,6 +161,19 @@
             this.MainPanel.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.CreateObjectWithMouse);
             this.MainPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.SelectObject);
             // 
+            // rectangleToolStripMenuItem
+            // 
+            this.rectangleToolStripMenuItem.Name = "rectangleToolStripMenuItem";
+            this.rectangleToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.rectangleToolStripMenuItem.Text = "Rectangle";
+            this.rectangleToolStripMenuItem.Click += new System.EventHandler(this.rectangleToolStripMenuItem_Click);
+            // 
+            // ellipseToolStripMenuItem
+            // 
+            this.ellipseToolStripMenuItem.Name = "ellipseToolStripMenuItem";
+            this.ellipseToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.ellipseToolStripMenuItem.Text = "Ellipse";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -193,6 +212,8 @@
         private System.Windows.Forms.ToolStripButton ClearBtn;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.Panel MainPanel;
+        private System.Windows.Forms.ToolStripMenuItem rectangleToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ellipseToolStripMenuItem;
     }
 }
 

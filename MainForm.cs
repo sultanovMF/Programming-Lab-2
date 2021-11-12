@@ -9,9 +9,19 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WinFormsApp1 {
+    
     public partial class MainForm : Form {
+        string current_type;
+
         private List<GraphObject> elements = new List<GraphObject>();
         public MainForm() {
+            Random rand = new Random();
+           
+            if (rand.NextInt64(0, 2) == 0) {
+                current_type = "Rectangle";
+            } else {
+                current_type = "Ellipse";
+            }
             InitializeComponent();
         }
 
@@ -23,10 +33,19 @@ namespace WinFormsApp1 {
             this.Close();
         }
 
-
-        private void AddObject(object sender, EventArgs e) {
-            elements.Add(new GraphObject());
+        private void Draw(GraphObject go) {
+            elements.Add(go);
             this.MainPanel.Invalidate();
+        }
+        private void AddObject(object sender, EventArgs e) {
+            if (current_type == "Rectangle") {
+                Rectangle go = new Rectangle();
+                Draw(go);
+            } else {
+                Ellipse go = new Ellipse();
+                Draw(go);
+            }
+
         }
 
         private void PaintPanel(object sender, PaintEventArgs e) {
@@ -36,15 +55,24 @@ namespace WinFormsApp1 {
         }
 
         private void CreateObjectWithMouse(object sender, MouseEventArgs e) {
-            GraphObject go = new GraphObject();
-            try {
-                go.X = e.X;
-                go.Y = e.Y;
-            } catch (ArgumentException ex) { MessageBox.Show("Incorrect coord"); }
-            elements.Add(go);
-            this.MainPanel.Invalidate();
+            if (current_type == "Rectangle") {
+                Rectangle go = new Rectangle();
+                try {
+                    go.X = e.X;
+                    go.Y = e.Y;
+                } catch (ArgumentException ex) { MessageBox.Show("Incorrect coord"); }
+                Draw(go);
+            } else {
+                Ellipse go = new Ellipse();
+                try {
+                    go.X = e.X;
+                    go.Y = e.Y;
+                } catch (ArgumentException ex) {
+                    MessageBox.Show("Incorrect coord");
+                }
+                Draw(go);
+            }
         }
-
         private void SelectObject(object sender, MouseEventArgs e) {
             foreach (GraphObject element in elements) {
                 if (element.ContainsPoint(e.Location)) {
@@ -52,6 +80,14 @@ namespace WinFormsApp1 {
                 }
             }
             this.MainPanel.Invalidate();
+        }
+
+        private void FiguresMenuItems_Click(object sender, EventArgs e) {
+
+        }
+
+        private void rectangleToolStripMenuItem_Click(object sender, EventArgs e) {
+
         }
     }
 }
