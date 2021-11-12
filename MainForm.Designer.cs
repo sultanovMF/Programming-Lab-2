@@ -41,10 +41,13 @@
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.MainPanel = new System.Windows.Forms.Panel();
-            this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
+            this.fabricsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.twoTypesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.randomToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -55,7 +58,8 @@
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.FileMenuItem,
-            this.FiguresMenuItems});
+            this.FiguresMenuItems,
+            this.fabricsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 28);
@@ -73,7 +77,7 @@
             // выходToolStripMenuItem
             // 
             this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
-            this.выходToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.выходToolStripMenuItem.Size = new System.Drawing.Size(116, 26);
             this.выходToolStripMenuItem.Text = "Exit";
             // 
             // FiguresMenuItems
@@ -89,14 +93,14 @@
             // rectangleToolStripMenuItem
             // 
             this.rectangleToolStripMenuItem.Name = "rectangleToolStripMenuItem";
-            this.rectangleToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.rectangleToolStripMenuItem.Size = new System.Drawing.Size(158, 26);
             this.rectangleToolStripMenuItem.Text = "Rectangle";
             this.rectangleToolStripMenuItem.Click += new System.EventHandler(this.rectangleToolStripMenuItem_Click);
             // 
             // ellipseToolStripMenuItem
             // 
             this.ellipseToolStripMenuItem.Name = "ellipseToolStripMenuItem";
-            this.ellipseToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.ellipseToolStripMenuItem.Size = new System.Drawing.Size(158, 26);
             this.ellipseToolStripMenuItem.Text = "Ellipse";
             this.ellipseToolStripMenuItem.Click += new System.EventHandler(this.ellipseToolStripMenuItem_Click);
             // 
@@ -194,6 +198,15 @@
             this.toolStripButton4.Text = "Bottom";
             this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
             // 
+            // toolStripButton5
+            // 
+            this.toolStripButton5.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton5.Image")));
+            this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton5.Name = "toolStripButton5";
+            this.toolStripButton5.Size = new System.Drawing.Size(87, 24);
+            this.toolStripButton5.Text = "Remove";
+            this.toolStripButton5.Click += new System.EventHandler(this.toolStripButton5_Click);
+            // 
             // statusStrip1
             // 
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -223,14 +236,28 @@
             this.MainPanel.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.CreateObjectWithMouse);
             this.MainPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.SelectObject);
             // 
-            // toolStripButton5
+            // fabricsToolStripMenuItem
             // 
-            this.toolStripButton5.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton5.Image")));
-            this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton5.Name = "toolStripButton5";
-            this.toolStripButton5.Size = new System.Drawing.Size(87, 24);
-            this.toolStripButton5.Text = "Remove";
-            this.toolStripButton5.Click += new System.EventHandler(this.toolStripButton5_Click);
+            this.fabricsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.twoTypesToolStripMenuItem,
+            this.randomToolStripMenuItem});
+            this.fabricsToolStripMenuItem.Name = "fabricsToolStripMenuItem";
+            this.fabricsToolStripMenuItem.Size = new System.Drawing.Size(68, 24);
+            this.fabricsToolStripMenuItem.Text = "Fabrics";
+            // 
+            // twoTypesToolStripMenuItem
+            // 
+            this.twoTypesToolStripMenuItem.Name = "twoTypesToolStripMenuItem";
+            this.twoTypesToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.twoTypesToolStripMenuItem.Text = "TwoTypes";
+            this.twoTypesToolStripMenuItem.Click += new System.EventHandler(this.twoTypesToolStripMenuItem_Click);
+            // 
+            // randomToolStripMenuItem
+            // 
+            this.randomToolStripMenuItem.Name = "randomToolStripMenuItem";
+            this.randomToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.randomToolStripMenuItem.Text = "Random";
+            this.randomToolStripMenuItem.Click += new System.EventHandler(this.randomToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -244,6 +271,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
             this.Text = "ООП - Фигуры";
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MainForm_KeyPress);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
@@ -277,6 +305,9 @@
         private System.Windows.Forms.ToolStripButton toolStripButton3;
         private System.Windows.Forms.ToolStripButton toolStripButton4;
         private System.Windows.Forms.ToolStripButton toolStripButton5;
+        private System.Windows.Forms.ToolStripMenuItem fabricsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem twoTypesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem randomToolStripMenuItem;
     }
 }
 

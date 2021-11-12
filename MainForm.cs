@@ -12,6 +12,7 @@ namespace WinFormsApp1 {
     
     public partial class MainForm : Form {
         string current_type;
+        IGraphFactory factory = new RandomObjectFactory();
         int id = -1;
         private List<GraphObject> elements = new List<GraphObject>();
         public MainForm() {
@@ -142,6 +143,20 @@ namespace WinFormsApp1 {
                 elements.Remove(elements[id]);
                 id = -1;
                 this.MainPanel.Invalidate();
+            }
+        }
+
+        private void twoTypesToolStripMenuItem_Click(object sender, EventArgs e) {
+            factory = new TwoTypeFactory();
+        }
+
+        private void randomToolStripMenuItem_Click(object sender, EventArgs e) {
+            factory = new RandomObjectFactory();
+        }
+
+        private void MainForm_KeyPress(object sender, KeyPressEventArgs e) {
+            if (e.KeyChar == '+') {
+                Draw(factory.CreateGraphObject());
             }
         }
     }
