@@ -12,7 +12,7 @@ namespace WinFormsApp1 {
     
     public partial class MainForm : Form {
         string current_type;
-
+        int id = -1;
         private List<GraphObject> elements = new List<GraphObject>();
         public MainForm() {
             Random rand = new Random();
@@ -75,7 +75,6 @@ namespace WinFormsApp1 {
         }
         private void SelectObject(object sender, MouseEventArgs e) {
             if (elements.Count > 0) {
-                int id = -1;
                 int i = 0;
                 foreach (GraphObject element in elements) {
                     if (element.ContainsPoint(e.Location)) {
@@ -102,6 +101,48 @@ namespace WinFormsApp1 {
 
         private void ellipseToolStripMenuItem_Click(object sender, EventArgs e) {
             current_type = "Ellipse";
+        }
+
+        private void ClearBtn_Click(object sender, EventArgs e) {
+            elements.Clear();
+            this.MainPanel.Invalidate();
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e) {
+            if (id > -1) {
+                elements[id].X -= 5;
+                this.MainPanel.Invalidate();
+            }
+            
+        }
+
+        private void toolStripButton2_Click(object sender, EventArgs e) {
+            if (id > -1) {
+                elements[id].X += 5;
+                this.MainPanel.Invalidate();
+            }
+        }
+
+        private void toolStripButton3_Click(object sender, EventArgs e) {
+            if (id > -1) {
+                elements[id].Y -= 5;
+                this.MainPanel.Invalidate();
+            }
+        }
+
+        private void toolStripButton4_Click(object sender, EventArgs e) {
+            if (id > -1) {
+                elements[id].Y += 5;
+                this.MainPanel.Invalidate();
+            }
+        }
+
+        private void toolStripButton5_Click(object sender, EventArgs e) {
+            if (id > -1) {
+                elements.Remove(elements[id]);
+                id = -1;
+                this.MainPanel.Invalidate();
+            }
         }
     }
 }
