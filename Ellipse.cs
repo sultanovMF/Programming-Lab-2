@@ -7,14 +7,16 @@ using System.Threading.Tasks;
 
 namespace WinFormsApp1 {
     class Ellipse : GraphObject {
-        int a;
-        int b;
+        float a;
+        float b;
         public Ellipse():base() {
             a = 80;
             b = 60;
         }
         public override bool ContainsPoint(Point p) {
-            return ((x - p.X) * (x - p.X) / (a * a) + (y - p.Y) * (y - p.Y) / (b * b)) <= 1;
+            float dx = a / 2.0f;
+            float dy = b / 2.0f;
+            return ((x + dx - p.X) * (x + dx - p.X)) / (dx * dx) + ((y + dy - p.Y) * (y + dy - p.Y)) / (dy * dy) <= 1;
         }
 
         public override void Draw(Graphics g) {

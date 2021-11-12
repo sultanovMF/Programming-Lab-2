@@ -74,12 +74,21 @@ namespace WinFormsApp1 {
             }
         }
         private void SelectObject(object sender, MouseEventArgs e) {
-            foreach (GraphObject element in elements) {
-                if (element.ContainsPoint(e.Location)) {
-                    element.Selected = true;
+            if (elements.Count > 0) {
+                int id = -1;
+                int i = 0;
+                foreach (GraphObject element in elements) {
+                    if (element.ContainsPoint(e.Location)) {
+                        id = i;
+                    }
+                    i++;
                 }
+                if (id > -1) {
+                    elements[id].Selected = true;
+                    this.MainPanel.Invalidate();
+                }
+                
             }
-            this.MainPanel.Invalidate();
         }
 
         private void FiguresMenuItems_Click(object sender, EventArgs e) {
