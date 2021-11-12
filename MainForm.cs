@@ -81,6 +81,7 @@ namespace WinFormsApp1 {
                     if (element.ContainsPoint(e.Location)) {
                         id = i;
                     }
+                    element.Selected = false;
                     i++;
                 }
                 if (id > -1) {
@@ -96,7 +97,11 @@ namespace WinFormsApp1 {
         }
 
         private void rectangleToolStripMenuItem_Click(object sender, EventArgs e) {
+            current_type = "Rectangle";
+        }
 
+        private void ellipseToolStripMenuItem_Click(object sender, EventArgs e) {
+            current_type = "Ellipse";
         }
     }
 }
