@@ -117,7 +117,6 @@
             this.AddBtn.Size = new System.Drawing.Size(100, 24);
             this.AddBtn.Text = "Добавить";
             this.AddBtn.Click += new System.EventHandler(this.AddObject);
-           
             // 
             // ClearBtn
             // 
@@ -153,6 +152,7 @@
             this.MainPanel.Size = new System.Drawing.Size(800, 369);
             this.MainPanel.TabIndex = 4;
             this.MainPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.PaintPanel);
+            this.MainPanel.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.CreateObjectWithMouse);
             // 
             // MainForm
             // 

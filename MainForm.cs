@@ -34,5 +34,16 @@ namespace WinFormsApp1 {
                 elem.Draw(e.Graphics);
             }
         }
+
+        private void CreateObjectWithMouse(object sender, MouseEventArgs e) {
+     
+            GraphObject go = new GraphObject();
+            try {
+                go.X = e.X;
+                go.Y = e.Y;
+            } catch (ArgumentException ex) { MessageBox.Show("Incorrect coord"); }
+
+            this.MainPanel.Invalidate();
+        }
     }
 }

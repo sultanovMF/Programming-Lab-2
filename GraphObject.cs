@@ -6,20 +6,20 @@ namespace WinFormsApp1 {
         static Random r = new Random();
         private int x;
 
-        int X {
+        public int X {
             get { return x; }
             set {
                 x = value;
             }
         }
 
-        int Y {
+        public int Y {
             get { return y; }
             set {
                 y = value;
             }
         } 
-        public int y;
+        private int y;
         int h;
         int w;
         SolidBrush brush;
