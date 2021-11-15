@@ -4,6 +4,13 @@ namespace WinFormsApp1 {
     class Rectangle: GraphObject {
         protected int h;
         protected int w;
+        public int H {
+            get { return h; }
+        }
+
+        public int W {
+            get { return w; }
+        }
         public Rectangle() : base() {
             h = 50;
             w = 50;

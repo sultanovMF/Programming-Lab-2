@@ -18,10 +18,12 @@ namespace WinFormsApp1 {
         public MainForm() {
             Random rand = new Random();
            
-            if (rand.NextInt64(0, 2) == 0) {
+            if (rand.NextInt64(0, 3) == 0) {
                 current_type = "Rectangle";
-            } else {
+            } else if (rand.NextInt64(0, 2) == 1) {
                 current_type = "Ellipse";
+            } else {
+                current_type = "ComposedRectangles";
             }
             InitializeComponent();
         }
@@ -42,8 +44,11 @@ namespace WinFormsApp1 {
             if (current_type == "Rectangle") {
                 Rectangle go = new Rectangle();
                 Draw(go);
-            } else {
+            } else if (current_type == "Ellipse") {
                 Ellipse go = new Ellipse();
+                Draw(go);
+            } else if (current_type == "ComposedRectangles") {
+                CompositeRectangles go = new CompositeRectangles();
                 Draw(go);
             }
 
@@ -62,8 +67,8 @@ namespace WinFormsApp1 {
                     go.X = e.X;
                     go.Y = e.Y;
                 } catch (ArgumentException ex) { MessageBox.Show("Incorrect coord"); }
-                Draw(go);
-            } else {
+                elements.Add(go);
+            } else if (current_type == "Ellipse") {
                 Ellipse go = new Ellipse();
                 try {
                     go.X = e.X;
@@ -71,8 +76,18 @@ namespace WinFormsApp1 {
                 } catch (ArgumentException ex) {
                     MessageBox.Show("Incorrect coord");
                 }
-                Draw(go);
+                elements.Add(go);
+            } else if (current_type == "ComposedRectangles") {
+                CompositeRectangles go = new CompositeRectangles();
+                try {
+                    go.X = e.X;
+                    go.Y = e.Y;
+                } catch (ArgumentException ex) {
+                    MessageBox.Show("Incorrect coord");
+                }
+                elements.Add(go);
             }
+            this.MainPanel.Invalidate();
         }
         private void SelectObject(object sender, MouseEventArgs e) {
             if (elements.Count > 0) {
@@ -159,5 +174,10 @@ namespace WinFormsApp1 {
                 Draw(factory.CreateGraphObject());
             }
         }
+
+        private void composedRectangleToolStripMenuItem_Click(object sender, EventArgs e) {
+            current_type = "ComposedRectangles";
+        }
+
     }
 }
